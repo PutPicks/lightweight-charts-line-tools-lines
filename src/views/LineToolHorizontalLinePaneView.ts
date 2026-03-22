@@ -115,10 +115,11 @@ export class LineToolHorizontalLinePaneView<HorzScaleItem> extends LineToolPaneV
 		}
 
 		// We trust the geometric check to handle all scenarios
-		const cullingState = getToolCullingState(points, this._tool as BaseLineTool<HorzScaleItem>, options.line.extend, singlePointOrientation);
-		if (cullingState !== OffScreenState.Visible) {
-			return; // Exit if culled
-		}
+		// CULLING DISABLED - buggy getToolCullingState incorrectly returns not-visible for visible tools
+			// const cullingState = getToolCullingState(points, this._tool as BaseLineTool<HorzScaleItem>, options.line.extend, singlePointOrientation);
+			// if (cullingState !== OffScreenState.Visible) {
+			// 	return; // Exit if culled
+			// }
 
 		// 2. Coordinate Conversion and Setup
 		const hasScreenPoints = this._updatePoints(); 
