@@ -112,11 +112,12 @@ export class LineToolVerticalLinePaneView<HorzScaleItem> extends LineToolPaneVie
 		 * This tells the engine: "Only hide this tool if the X-coordinate (Time) is off-screen."
 		 * The Y-coordinate (Price) is ignored for culling because the line spans all prices.
 		 */
-		const cullingState = getToolCullingState(points, this._tool as BaseLineTool<HorzScaleItem>, options.line.extend, { horizontal: false, vertical: true });
-		if (cullingState !== OffScreenState.Visible) {
-			//console.log('vertical line culled')
-			return; // Exit if culled
-		}
+		// CULLING DISABLED - buggy getToolCullingState incorrectly returns not-visible for visible tools
+		// const cullingState = getToolCullingState(points, this._tool as BaseLineTool<HorzScaleItem>, options.line.extend, { horizontal: false, vertical: true });
+		// if (cullingState !== OffScreenState.Visible) {
+		// 	//console.log('vertical line culled')
+		// 	return; // Exit if culled
+		// }
 		// --- CULLING IMPLEMENTATION END ---
 
 		// 1. Convert the single logical point (P1) to a screen anchor.
